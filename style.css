@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+input {
+    display: none;
+}
+.label-active {
+    color: rgb(144, 58, 58);
+    font-weight: bolder;
+}
+.container {
+    width: 100%;
+    text-align: center;
+    min-height: 100vh;
+}
+h1 {
+    font-weight: normal;
+    font-size: 35px;
+    position: relative;
+    margin: 40px 0;
+}
+h1::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: crimson;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: animate 4s linear infinite;
+}
+@keyframes animate {
+    0% {
+        width: 100px;
+    }
+    50% {
+        width: 200px;
+    }
+    100% {
+        width: 100px;
+    }
+}
+/* .top-content {
+    background-color: rgb(243, 243, 243);
+    width: 90%;
+    margin: 0 auto 20px auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+} */
+
+/* CSS for larger screens */
+.top-content {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    margin: 0 auto 20px auto;
+}
+
+.top-content label {
+    margin: 10px;
+    flex: 1 0 200px; /* flex-grow | flex-shrink | flex-basis */
+}
+
+
+/* CSS for medium screens */
+@media screen and (max-width: 768px) {
+    .top-content label {
+        flex: 1 0 150px;
+    }
+}
+
+/* CSS for small screens */
+@media screen and (max-width: 480px) {
+    .top-content label {
+        flex: 1 0 100px;
+    }
+}
+h3 {
+    height: 100%;
+    background-color: lightgray;
+    line-height: 60px;
+    padding: 0 50px;
+    color: white;
+}
+label {
+    display: inline-block;
+    height: 100%;
+    padding: 0 15px;
+    margin: 0 70px;
+    line-height: 60px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+label:hover {
+    color: black;
+}
+.photo-gallery {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+.pic {
+    width: 90%;
+    /* margin: 100px auto 50px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+.pic img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.pic img:hover {
+    transform: scale(0.8) rotate(-15deg);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#check1:checked~ .container .photo-gallery .pic {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+    transition: 0.5s;
+}
+
+#check2:checked~ .container .photo-gallery .colored {
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+}
+#check2:checked~ .container .photo-gallery .unshaded {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.0s;
+}
+
+#check3:checked~ .container .photo-gallery .unshaded {
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+    transition: 0.5s;
+}
+#check3:checked~ .container .photo-gallery .colored {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.0s;
+}
+
+.popup-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+
+.popup-image span {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.popup-image img {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    border-radius: 15px;
+}
+
+footer {
+    text-align: center;
+    margin: 50px 0;
+    color: #333;
+}
