@@ -128,6 +128,19 @@ label:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.pic video {
+    width: 100%;
+    height: 15rem; /* adjust this value as needed */
+    cursor: pointer;
+    object-fit: cover; /* add this line */
+}
+
+.pic video:hover {
+    transform: scale(0.8) rotate(-15deg);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 #check1:checked~ .container .photo-gallery .pic {
     opacity: 1;
     transform: scale(1);
@@ -140,7 +153,8 @@ label:hover {
     opacity: 1;
     position: relative;
 }
-#check2:checked~ .container .photo-gallery .unshaded {
+#check2:checked~ .container .photo-gallery .unshaded,
+#check2:checked~ .container .photo-gallery .videos {
     opacity: 0;
     transform: scale(0);
     position: absolute;
@@ -153,7 +167,22 @@ label:hover {
     position: relative;
     transition: 0.5s;
 }
-#check3:checked~ .container .photo-gallery .colored {
+
+#check3:checked~ .container .photo-gallery .colored,
+#check3:checked~ .container .photo-gallery .videos {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.0s;
+}
+#check4:checked~ .container .photo-gallery .videos {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+    transition: 0.5s;
+}
+#check4:checked~ .container .photo-gallery .colored,
+#check4:checked~ .container .photo-gallery .unshaded {
     opacity: 0;
     transform: scale(0);
     position: absolute;
@@ -195,6 +224,88 @@ label:hover {
     border-radius: 15px;
 }
 
+.popup-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+
+.popup-video .ionicon {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* .video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.popup-video video {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    border-radius: 15px;
+} */
+.video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Set a fixed width */
+    height: 0; /* Set the height to 0 */
+    padding-bottom: 43.5%; /* Set the bottom padding to 56.25% for a 16:9 aspect ratio */
+    overflow: hidden; /* Hide anything that goes outside the div */
+}
+
+.popup-video video {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    border-radius: 15px;
+}
+
+#prev-video, #next-video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    font-weight: bolder;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 101; /* Increased z-index */
+}
+
+#prev-video {
+    left: 25%;
+}
+
+#next-video {
+    right: 25%;
+}
 footer {
     text-align: center;
     margin: 50px 0;
